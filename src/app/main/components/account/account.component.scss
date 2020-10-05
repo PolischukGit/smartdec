@@ -1,0 +1,45 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  .tabs-line {
+    margin-top: 20px;
+    background: #212121;
+    border: 1px solid #212121;
+    border-radius: 4px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &.nav {
+      height: 40px;
+    }
+    &.body {
+      height: 373px;
+      padding: 25px;
+      flex-direction: column;
+      .main-container {
+        flex: 1;
+      }
+      .btn-container {
+        height: 35px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .left-part {
+          .digitex-btn {
+            height: 35px;
+            width: 107px;
+          }
+        }
+        .right-part {
+          display: flex;
+          justify-content: flex-end;
+          .digitex-btn {
+            height: 35px;
+            width: 107px;
+          }
+        }
+      }
+    }
+  }
+}

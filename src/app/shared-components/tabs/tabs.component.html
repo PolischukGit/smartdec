@@ -1,0 +1,19 @@
+<section *ngIf="(screenWatcher$|async) as wtc">
+  <div class="tabs-container" *ngIf="wtc >= collapse else minimize">
+    <div class="title" *ngFor="let tab of (tabs || [])"
+         [class.active]="active.toLowerCase() === tab.toLowerCase()"
+         (click)="switchTab.emit(tab)">
+      <span>{{tab}}</span>
+    </div>
+  </div>
+</section>
+
+<ng-template #minimize>
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item *ngFor="let tab of (tabs || [])"
+            (click)="switchTab.emit(tab)">{{tab}}</button>
+  </mat-menu>
+</ng-template>

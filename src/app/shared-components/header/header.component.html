@@ -1,0 +1,16 @@
+<header>
+  <div class="left">
+    <div class="logo"></div>
+    <div class="separator"></div>
+    <div class="label">TESTNET</div>
+  </div>
+  <div class="tabs">
+    <app-tabs [tabs]="headerTabs" [active]="active || ''"
+              [collapse]="1105"
+              (switchTab)="switchTab.emit($event)"></app-tabs>
+  </div>
+  <div class="right">
+    <app-user-info [collapse]="640"
+                   (switchTab)="switchTab.emit($event)"></app-user-info>
+  </div>
+</header>

@@ -1,0 +1,10 @@
+<section class="global-wrapper">
+  <app-header (switchTab)="navigateTo($event)"
+              [active]="active"></app-header>
+  <section class="main-content">
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer [collapse]="750"></app-footer>
+  </section>
+</section>

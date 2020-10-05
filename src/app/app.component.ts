@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: '<router-outlet></router-outlet>',
+  styles: []
 })
 export class AppComponent {
-  title = 'smartdec';
+  @HostBinding('style.minWidth') minWidth = '500px';
 }

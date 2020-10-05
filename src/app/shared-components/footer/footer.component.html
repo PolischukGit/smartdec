@@ -1,0 +1,23 @@
+<footer *ngIf="(screenWatcher$|async) as wtc"
+        class="{{wtc >= collapse ? 'line' : 'column'}}">
+  <div class="logo"></div>
+  <div class="policy">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms & Policies</a>
+    <a href="#">Risks Warning</a>
+  </div>
+  <div class="socials">
+    <a href="#">
+      <img src="./assets/face.svg">
+    </a>
+    <a href="#">
+      <img src="./assets/twit.svg">
+    </a>
+    <a href="#">
+      <img src="./assets/telegram.svg">
+    </a>
+    <a href="#">
+      <img src="./assets/Vector.svg">
+    </a>
+  </div>
+</footer>
