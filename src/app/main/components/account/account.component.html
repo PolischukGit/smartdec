@@ -5,12 +5,46 @@
   </div>
   <div class="tabs-line body">
     <div class="main-container">
-      main
+      <div class="stepper-line">
+        <div class="label">Enable Google authentification</div>
+        <div class="stepper">
+          <div class="stepper-body">1</div>
+          <div class="stepper-body">2</div>
+          <div class="stepper-body active">3</div>
+        </div>
+        <div [style.flex]="1"></div>
+      </div>
+      <div class="number-type-container">
+        <p class="step-number">Step 3</p>
+        <p class="descr">Now type 6 number from your Google Authenticator app</p>
+        <p class="descr">to activate 2FA authentication to your account</p>
+      </div>
+      <div class="checker">
+        <app-key-checker [rows]="6" (sendValue)="checkValue($event)"></app-key-checker>
+      </div>
+      <div class="result">
+        <span *ngIf="checker$|async else incorrect" class="correct">
+          <mat-icon>done</mat-icon>
+          correct
+        </span>
+        <ng-template #incorrect>
+          <span class="incorrect">
+            <mat-icon>warning</mat-icon>
+            incorrect
+          </span>
+        </ng-template>
+      </div>
     </div>
     <div class="btn-container">
       <div class="left-part">
-        <button class="digitex-btn primary">Prev step</button>
-        <button class="digitex-btn primary">Finish</button>
+        <button class="digitex-btn primary">
+          <mat-icon>arrow_back</mat-icon>
+          Prev step
+        </button>
+        <button class="digitex-btn primary">
+          Finish
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
       </div>
       <div class="right-part">
         <button class="digitex-btn dis">Cancel</button>

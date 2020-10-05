@@ -1,4 +1,4 @@
-<section *ngIf="(screenWatcher$|async) as wtc">
+<section *ngIf="(screenWidthValue|async) as wtc">
   <div class="tabs-container" *ngIf="wtc >= collapse else minimize">
     <div class="title" *ngFor="let tab of (tabs || [])"
          [class.active]="active.toLowerCase() === tab.toLowerCase()"

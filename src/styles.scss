@@ -6,6 +6,7 @@
 body {
   margin: 0;
   padding: 0;
+  min-width: 600px;
 }
 
 html, body { height: 100%; }
@@ -26,6 +27,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin: 0 10px;
   padding: 0 10px;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   &.primary {
     color: #38B1DC;
     border: 1px solid #38B1DC;

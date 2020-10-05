@@ -1,4 +1,4 @@
-<footer *ngIf="(screenWatcher$|async) as wtc"
+<footer *ngIf="(screenWidthValue|async) as wtc"
         class="{{wtc >= collapse ? 'line' : 'column'}}">
   <div class="logo"></div>
   <div class="policy">

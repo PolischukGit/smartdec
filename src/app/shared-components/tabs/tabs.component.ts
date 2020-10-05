@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { EventHandler } from '../../helpers/event-handler';
 
 @Component({
   selector: 'app-tabs',
@@ -8,7 +7,7 @@ import { startWith, takeUntil } from 'rxjs/operators';
   styleUrls: ['./tabs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TabsComponent implements OnInit, OnDestroy {
+export class TabsComponent extends EventHandler {
 
   @HostBinding('style.display') display = 'flex';
   @HostBinding('style.height') height = '100%';
@@ -19,22 +18,4 @@ export class TabsComponent implements OnInit, OnDestroy {
   @Input('collapse') collapse = 1000;
   @Output('switchTab') switchTab = new EventEmitter<string>();
 
-  screenWatcher$: BehaviorSubject<number>;
-  private alive$ = new Subject<void>();
-
-  ngOnInit(): void {
-    this.screenWatcher$ = new BehaviorSubject<number>(null);
-    fromEvent(window, 'resize').pipe(
-      takeUntil(this.alive$),
-      startWith(true)
-    ).subscribe(() => {
-      const {innerWidth} = window;
-      this.screenWatcher$.next(innerWidth);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.alive$.next();
-    this.alive$.complete();
-  }
 }

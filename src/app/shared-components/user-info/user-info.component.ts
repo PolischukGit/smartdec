@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
-import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { EventHandler } from '../../helpers/event-handler';
 
 @Component({
   selector: 'app-user-info',
@@ -8,29 +7,11 @@ import { startWith, takeUntil } from 'rxjs/operators';
   styleUrls: ['./user-info.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserInfoComponent implements OnInit, OnDestroy {
+export class UserInfoComponent extends EventHandler {
 
   @Input('collapse') collapse = 1100;
   @Output('switchTab') switchTab = new EventEmitter<string>();
 
   balance = 20000;
 
-  screenWatcher$: BehaviorSubject<number>;
-  private alive$ = new Subject<void>();
-
-  ngOnInit(): void {
-    this.screenWatcher$ = new BehaviorSubject<number>(null);
-    fromEvent(window, 'resize').pipe(
-      takeUntil(this.alive$),
-      startWith(true)
-    ).subscribe(() => {
-      const {innerWidth} = window;
-      this.screenWatcher$.next(innerWidth);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.alive$.next();
-    this.alive$.complete();
-  }
 }

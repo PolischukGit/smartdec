@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FakeService } from '../../../services/fake-service.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-account',
@@ -20,5 +22,14 @@ export class AccountComponent {
     'Insurance Fund',
     'Settings'
   ];
+
+  checker$ = new BehaviorSubject<boolean>(false);
+
+  constructor(private service: FakeService) {
+  }
+
+  checkValue(value: number): void {
+    this.checker$.next(this.service.checkCode(value));
+  }
 
 }

@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
-import { startWith, takeUntil } from 'rxjs/operators';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { EventHandler } from '../../helpers/event-handler';
 
 @Component({
   selector: 'app-footer',
@@ -8,27 +7,8 @@ import { startWith, takeUntil } from 'rxjs/operators';
   styleUrls: ['./footer.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FooterComponent implements OnInit, OnDestroy {
+export class FooterComponent extends EventHandler {
 
   @Input('collapse') collapse = 1000;
-
-  screenWatcher$: BehaviorSubject<number>;
-  private alive$ = new Subject<void>();
-
-  ngOnInit(): void {
-    this.screenWatcher$ = new BehaviorSubject<number>(null);
-    fromEvent(window, 'resize').pipe(
-      takeUntil(this.alive$),
-      startWith(true)
-    ).subscribe(() => {
-      const {innerWidth} = window;
-      this.screenWatcher$.next(innerWidth);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.alive$.next();
-    this.alive$.complete();
-  }
 
 }
