@@ -17,39 +17,45 @@
       height: 373px;
       padding: 25px;
       flex-direction: column;
+      @media only screen and (max-width: 539px) {
+        height: 500px;
+      }
       .main-container {
         flex: 1;
         .stepper-line {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          @media only screen and (max-width: 880px)  {
+          @media only screen and (max-width: 879px) {
             flex-direction: column;
-            .label {
-              margin-bottom: 20px;
-            }
           }
           .label {
-            font-size: 14px;
+            font-size: 16px;
             color: #DCDCDC;
             flex: 1;
+            @media only screen and (max-width: 879px) {
+              margin-bottom: 20px;
+            }
+            @media only screen and (max-width: 360px) {
+              font-size: 14px;
+            }
           }
           .stepper {
             flex: 1;
             display: flex;
             justify-content: center;
             .stepper-body {
-              width: 28px;
-              height: 28px;
-              display: inline-block;
+              width: 27px;
+              height: 27px;
               border: 1px solid #3C3D44;
               border-radius: 50%;
-              line-height: 28px;
-              text-align: center;
               margin-right: 30px;
               font-size: 14px;
               color: #444444;
               position: relative;
+              display: flex;
+              justify-content: center;
+              align-items: center;
               &.active {
                 background-color: #38B1DC;
                 border: 1px solid #38B1DC;
@@ -75,7 +81,7 @@
           }
         }
         .number-type-container {
-          @media only screen and (max-width: 880px)  {
+          @media only screen and (max-width: 879px)  {
             text-align: center;
           }
           .step-number {
@@ -85,39 +91,73 @@
           .descr {
             margin: 0;
             font-size: 14px;
+            line-height: 18px;
             color: #DCDCDC;
+            width: 420px;
+            @media only screen and (max-width: 879px)  {
+              margin: auto;
+            }
+            @media only screen and (max-width: 599px)  {
+              width: auto;
+            }
           }
         }
         .checker {
-          @media only screen and (max-width: 880px)  {
+          @media only screen and (max-width: 879px)  {
             display: flex;
             justify-content: center;
           }
         }
         .result {
           margin-top: 20px;
-          @media only screen and (max-width: 880px)  {
+          @media only screen and (max-width: 879px)  {
             display: flex;
             justify-content: center;
           }
         }
       }
       .btn-container {
-        height: 35px;
         display: flex;
         justify-content: space-between;
         width: 100%;
+        @media only screen and (max-width: 539px)  {
+          flex-direction: column;
+        }
         .left-part {
-          display: inline-flex;
+          display: flex;
           align-items: center;
+          @media only screen and (max-width: 539px)  {
+            flex-direction: column;
+          }
           .digitex-btn {
             height: 35px;
-            width: 107px;
+            justify-content: space-around;
+            @media only screen and (max-width: 539px)  {
+              margin-bottom: 15px;
+            }
+            mat-icon {
+              font-size: 16px;
+              width: 16px;
+              height: 16px;
+            }
+            &.prev {
+              width: 115px;
+              margin-right: 15px;
+              @media only screen and (max-width: 539px)  {
+                margin-right: 0;
+              }
+            }
+            &.next {
+              width: 101px;
+            }
           }
         }
         .right-part {
           display: flex;
           justify-content: flex-end;
+          @media only screen and (max-width: 539px)  {
+            justify-content: center;
+          }
           .digitex-btn {
             height: 35px;
             width: 107px;

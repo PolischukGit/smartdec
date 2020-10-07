@@ -1,6 +1,8 @@
 <footer *ngIf="(screenWidthValue|async) as wtc"
         class="{{wtc >= collapse ? 'line' : 'column'}}">
-  <div class="logo"></div>
+  <div class="logo">
+    <div class="copyright">{{copyright}}</div>
+  </div>
   <div class="policy">
     <a href="#">Privacy Policy</a>
     <a href="#">Terms & Policies</a>

@@ -11,4 +11,8 @@ export class FooterComponent extends EventHandler {
 
   @Input('collapse') collapse = 1000;
 
+  get copyright(): string {
+    return `© 2017 - ${new Date().getFullYear()}`;
+  }
+
 }
