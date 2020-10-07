@@ -59,10 +59,16 @@ export class KeyCheckerComponent implements OnInit, OnDestroy {
 
   handleFocus(back = false): void {
     const activeIndex = Object.entries(this.formGroup.value).map(([, value]) => value).join('').length;
-    if (activeIndex === this.rows && !back) return;
-    const curr = back ? activeIndex - 1 : activeIndex;
+    let curr;
+    if (activeIndex === this.rows && !back) {
+      curr = this.rows - 1;
+    } else {
+      curr = back ? activeIndex - 1 : activeIndex;
+    }
     this.focusInput(curr);
     this.activeInputIndex = curr;
+    const control = this.formGroup.get(this.activeInputIndex.toString());
+    control.setValue(control.value);
   }
 
   focusInput(ind: number): void {
