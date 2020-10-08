@@ -1,6 +1,5 @@
 <div class="wrapper" [formGroup]="formGroup" (click)="handleFocus()">
   <input type="number" class="custom"
          *ngFor="let inp of inputs; let ind = index"
-         [formControlName]="ind"
-         (blur)="activeInputIndex = 0">
+         [formControlName]="ind">
 </div>
