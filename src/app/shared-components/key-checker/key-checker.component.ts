@@ -32,7 +32,9 @@ export class KeyCheckerComponent implements OnInit, OnDestroy {
     }
     fromEvent(window, 'keydown').pipe(
       takeUntil(this.alive$),
-      filter((e: KeyboardEvent) => e.keyCode === 8 || Number.isInteger(+e.key)),
+      filter((e: KeyboardEvent) => {
+        return e.keyCode === 8 || Number.isInteger(+(e.target as HTMLInputElement).value);
+      }),
       tap(e => e.preventDefault())
     ).subscribe((e: KeyboardEvent) => {
       if (this.activeInputIndex !== null) {
